@@ -1,49 +1,96 @@
 # rock-paper-scissor-project
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-    "Rock Paper Scissors"
-    </title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-             <body>
-                <header>
-                    <h1>ROCK PAPER SCISSORS</h1>
-                </header>
-                        <div class="score-board">
-                                 <div id="user-lable" class="badge">user</div>
-                                 <div id="computer-lable" class="badge">user</div>
-                                 <span id ="user-score">0</span>:<span id ="computer-score">0</span>
+ let userScore = 0;
+let computerScore =0;
+const userScore_span = document.getElementById("user-score");
+const computerScore_span = document.getElementById("computer-score");
+const scoreboard_div = document.querySelector(".score.board");
+const result_div = document.querySelector(".result");
+const ROCK_div = document.getElementById("R");
+const HAND_div = document.getElementById("H");
+const SCISSOR_div = document.getElementById("S");
 
 
-                        </div>
+function getComputerChoice(){
+    const choices = ['R' , 'H' , 'S' ];
+    const randomNumber = Math.floor(Math.random()*3);
+    return choices[randomNumber];
+}
+
+function convertToWord(letter){
+    if(letter ==="R") return "ROCK"
+    if(letter ==="H") return "HAND"
+    return "Scissors";
+
+}
 
 
-                                <div class="result">
-                                    <p>Scissor Cuts Paper.  YOU WIN...!</p>
-                                </div>
 
-        
-                                <div class="choices" id="H">
-                                    <img src="images/HAND.jpg" alt="">
-                                </div>
-                                <div class="choices" id="R">
-                                    <img src="images/ROCK.jpg" alt="">
-                                </div>
-                                <div class="choices" id="S">    
-                                    <img src="images/SCISSOR.jpg" alt="">
-                                </div>
+getComputerChoice();
+
+function win(userChoice, computerChoice){
+    userScore++;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+    result_div.innerHTML = ' you win'
+}
+
+function lose(userChoice, computerChoice){
+   computerScore++;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+result_div.innerHTML = ' you lose'
+}
 
 
-                                
+function draw(userChoice, computerChoice){
+    console.log('draw');
+}
+
+
+
+function game(userChoice){
+
+    const computerchoice =getComputerChoice();
+    switch(userChoice + computerchoice){
+        case"RS":
+        case "HR":
+        case "SR":
+          win();
+        break
+
+
+        case "RH":
+        case "SR":
+        case "HS":
+           lose();
+        break
+
+        case "RR":
+        case "HH":
+        case "SS":
+            draw();
+            break
+
+
+
+    }
+
+}
+
+function main(){
+
+ROCK_div.addEventListener('click', function(){
+    game("R");
+})
+
+HAND_div.addEventListener('click', function() {
+    game("H");
+})
+SCISSOR_div.addEventListener('click', function(){
+    game("S");
+})
+}
+
+main();                               
                         
 
-    <p id="action"> Make Your Move.</p>     
-    <script src="app.js" charset="utf-8"> </script>            
-
-    
-              </body>
-</html>
