@@ -1,96 +1,30 @@
 # rock-paper-scissor-project
- let userScore = 0;
-let computerScore =0;
-const userScore_span = document.getElementById("user-score");
-const computerScore_span = document.getElementById("computer-score");
-const scoreboard_div = document.querySelector(".score.board");
-const result_div = document.querySelector(".result");
-const ROCK_div = document.getElementById("R");
-const HAND_div = document.getElementById("H");
-const SCISSOR_div = document.getElementById("S");
+Description:
+Rock Paper Scissors is a classic hand game where two players simultaneously choose one of three items: rock, paper, or scissors. The winner is determined by the rules: rock crushes scissors, scissors cuts paper, and paper covers rock. This JavaScript implementation allows a single player to play against the computer.
 
+Features:
 
-function getComputerChoice(){
-    const choices = ['R' , 'H' , 'S' ];
-    const randomNumber = Math.floor(Math.random()*3);
-    return choices[randomNumber];
-}
+Player Interaction: The player can choose their move by clicking on buttons representing rock, paper, or scissors.
+Computer Opponent: The computer randomly selects its move.
+Game Logic: The game determines the winner based on the choices made by the player and the computer.
+Result Display: After the player selects their move, the game displays the result (win, lose, or tie) on the screen.
+Dynamic UI: The game updates the user interface dynamically to reflect the player's choices and the game outcome.
+Technologies:
 
-function convertToWord(letter){
-    if(letter ==="R") return "ROCK"
-    if(letter ==="H") return "HAND"
-    return "Scissors";
+HTML: Provides the structure of the game interface.
+CSS: Styles the HTML elements to improve the visual appearance.
+JavaScript: Implements the game logic, handles user interaction, and updates the UI dynamically.
+How to Play:
 
-}
+Open the game in a web browser.
+Click on one of the buttons representing rock, paper, or scissors to make your move.
+The computer will randomly select its move.
+The game will determine the winner and display the result on the screen.
+Play again by clicking on another button to make a new move.
+Extensions:
 
-
-
-getComputerChoice();
-
-function win(userChoice, computerChoice){
-    userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    result_div.innerHTML = ' you win'
-}
-
-function lose(userChoice, computerChoice){
-   computerScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-result_div.innerHTML = ' you lose'
-}
-
-
-function draw(userChoice, computerChoice){
-    console.log('draw');
-}
-
-
-
-function game(userChoice){
-
-    const computerchoice =getComputerChoice();
-    switch(userChoice + computerchoice){
-        case"RS":
-        case "HR":
-        case "SR":
-          win();
-        break
-
-
-        case "RH":
-        case "SR":
-        case "HS":
-           lose();
-        break
-
-        case "RR":
-        case "HH":
-        case "SS":
-            draw();
-            break
-
-
-
-    }
-
-}
-
-function main(){
-
-ROCK_div.addEventListener('click', function(){
-    game("R");
-})
-
-HAND_div.addEventListener('click', function() {
-    game("H");
-})
-SCISSOR_div.addEventListener('click', function(){
-    game("S");
-})
-}
-
-main();                               
-                        
-
+Multiplayer Support: Allow two players to play against each other on separate devices.
+Score Tracking: Keep track of the score over multiple rounds.
+Animated Effects: Add animations to make the game more visually appealing.
+Difficulty Levels: Implement different difficulty levels for the computer opponent.
+Rock Paper Scissors is a simple yet entertaining game that can be enjoyed by people of all ages. This JavaScript implementation offers a convenient way to play the game anytime, anywhere, right from your web browser.
